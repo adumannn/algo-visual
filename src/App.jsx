@@ -1,0 +1,49 @@
+import { Routes, Route, NavLink } from 'react-router-dom'
+import SortingVisualizer from './visualizers/SortingVisualizer'
+import LinkedListVisualizer from './visualizers/LinkedListVisualizer'
+import StackVisualizer from './visualizers/StackVisualizer'
+import './App.css'
+
+
+//nav 
+const navItems = [  
+  { path: '/', label: 'Sorting' },
+  { path: '/linked-list', label: 'Linked List' },
+  { path: '/stack', label: 'Stack' },
+]
+
+//insert. bubble quick linked lifo fifo
+
+export default function App() {
+  return (
+    <div className="app">
+      <nav className="sidebar">
+        <div className="logo">
+          <span>algo</span>
+        </div>
+        <div className="nav-links">
+          {navItems.map(item => (
+            <NavLink
+              key={item.path}
+              to={item.path}
+              end={item.path === '/'}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+            >
+              {item.label}
+            </NavLink>
+          ))}
+        </div>
+        <div className="sidebar-footer">
+          <span className="text-dim">версия 1</span>
+        </div>
+      </nav>
+      <main className="content">
+        <Routes>
+          <Route path="/" element={<SortingVisualizer />} />
+          <Route path="/linked-list" element={<LinkedListVisualizer />} />
+          <Route path="/stack" element={<StackVisualizer />} />
+        </Routes>
+      </main>
+    </div>
+  )
+}
