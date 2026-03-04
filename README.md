@@ -88,6 +88,10 @@ npm run preview
         ├── StackVisualizer.jsx        # Stack visualizer
         └── StackQueueVisualizer.tsx   # Combined Stack & Queue visualizer
 ```
+ideas from:
+- [sorting](https://youtu.be/pFXYym4Wbkc?si=nHV2HNyQ7OMRHrRx)
+- [sorting](https://youtu.be/JMnZ3VoWinY?si=Dqoi1dHxiv3gfgCH)
+
 
 ## License
 
