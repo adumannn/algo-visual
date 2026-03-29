@@ -81,7 +81,7 @@ export default function StackVisualizer() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '340px',
+            minHeight: '200px',
             color: 'var(--text-dim)',
             fontSize: '0.85rem',
           }}>
@@ -93,7 +93,7 @@ export default function StackVisualizer() {
             flexDirection: 'column-reverse',
             alignItems: 'center',
             gap: '4px',
-            minHeight: '340px',
+            minHeight: '200px',
             justifyContent: 'flex-start',
             paddingTop: '20px',
           }}>
@@ -101,8 +101,8 @@ export default function StackVisualizer() {
               <div
                 key={item.id}
                 style={{
-                  width: '140px',
-                  padding: '12px 16px',
+                  width: 'clamp(100px, 35vw, 140px)',
+                  padding: '10px 14px',
                   background: peeked === item.id
                     ? 'var(--accent)'
                     : 'var(--surface-2)',

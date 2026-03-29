@@ -1,12 +1,13 @@
-import { Routes, Route, NavLink } from 'react-router-dom'
+import { useState } from 'react'
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import SortingVisualizer from './visualizers/SortingVisualizer'
 import LinkedListVisualizer from './visualizers/LinkedListVisualizer'
 import StackVisualizer from './visualizers/StackVisualizer'
 import './App.css'
 
 
-//nav 
-const navItems = [  
+//nav
+const navItems = [
   { path: '/', label: 'Sorting' },
   { path: '/linked-list', label: 'Linked List' },
   { path: '/stack', label: 'Stack' },
@@ -15,9 +16,24 @@ const navItems = [
 //insert. bubble quick linked lifo fifo
 
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const location = useLocation()
+
+  const handleNavClick = () => setMenuOpen(false)
+
   return (
     <div className="app">
-      <nav className="sidebar">
+      <button
+        className="menu-toggle"
+        onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
+      >
+        <span className={`hamburger ${menuOpen ? 'open' : ''}`} />
+      </button>
+
+      {menuOpen && <div className="sidebar-overlay" onClick={() => setMenuOpen(false)} />}
+
+      <nav className={`sidebar ${menuOpen ? 'sidebar-open' : ''}`}>
         <div className="logo">
           <span>algo</span>
         </div>
@@ -28,6 +44,7 @@ export default function App() {
               to={item.path}
               end={item.path === '/'}
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={handleNavClick}
             >
               {item.label}
             </NavLink>

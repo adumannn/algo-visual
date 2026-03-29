@@ -1,5 +1,9 @@
 import { useState, useRef, useCallback, useEffect } from 'react'
 
+function getBarCount() {
+  return window.innerWidth <= 480 ? 20 : window.innerWidth <= 768 ? 28 : 40
+}
+
 function generateArray(size) {
   return Array.from({ length: size }, () => ({
     value: Math.floor(Math.random() * 300) + 20,
@@ -12,7 +16,7 @@ function sleep(ms) {
 }
 
 export default function SortingVisualizer() {
-  const [bars, setBars] = useState(() => generateArray(40))
+  const [bars, setBars] = useState(() => generateArray(getBarCount()))
   const [algo, setAlgo] = useState('bubble')
   const [speed, setSpeed] = useState(50)
   const [sorting, setSorting] = useState(false)
@@ -30,7 +34,7 @@ export default function SortingVisualizer() {
     stopRef.current = true
     setSorting(false)
     setComparisons(0)
-    setBars(generateArray(40))
+    setBars(generateArray(getBarCount()))
   }
 
   const updateBars = (arr) => {
@@ -240,7 +244,7 @@ export default function SortingVisualizer() {
           display: 'flex',
           alignItems: 'flex-end',
           gap: '2px',
-          height: '340px',
+          height: 'clamp(200px, 40vh, 340px)',
           width: '100%',
         }}>
           {bars.map((bar, i) => (
@@ -265,7 +269,8 @@ export default function SortingVisualizer() {
 
         <div style={{
           display: 'flex',
-          gap: '16px',
+          flexWrap: 'wrap',
+          gap: '8px 16px',
           marginTop: '16px',
           fontSize: '0.7rem',
           color: 'var(--text-dim)',

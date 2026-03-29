@@ -167,7 +167,7 @@ export default function LinkedListVisualizer() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            height: '340px',
+            minHeight: '200px',
             color: 'var(--text-dim)',
             fontSize: '0.85rem',
           }}>
@@ -178,8 +178,8 @@ export default function LinkedListVisualizer() {
             display: 'flex',
             alignItems: 'center',
             gap: '0',
-            minHeight: '340px',
-            padding: '20px',
+            minHeight: '200px',
+            padding: '12px',
             flexWrap: 'wrap',
             rowGap: '16px',
           }}>
