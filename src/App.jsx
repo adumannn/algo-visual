@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import SortingVisualizer from './visualizers/SortingVisualizer'
 import LinkedListVisualizer from './visualizers/LinkedListVisualizer'
 import StackVisualizer from './visualizers/StackVisualizer'
@@ -61,6 +62,7 @@ export default function App() {
           <Route path="/stack" element={<StackVisualizer />} />
         </Routes>
       </main>
+      <Analytics />
     </div>
   )
 }
